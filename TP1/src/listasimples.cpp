@@ -1,5 +1,7 @@
-#include "../include/listasimples.h"
 #include <iostream>
+
+#include "../include/listasimples.h"
+#include "../include/fila.h"
 
 ListaEncadeada::ListaEncadeada(){
     _inicio= new Node_t();
@@ -28,12 +30,6 @@ void ListaEncadeada::remover_elemento(TipoItem item){
         int i;
         Node_t *ant= _inicio;
         Node_t *seg= ant->_prox;
-        //while(seg->_item!= item && cont<_num_elementos ){
-        /*while(seg->_item!= item && seg->_prox!= nullptr){
-            ant= seg;
-            seg= seg->_prox;
-            cont ++;
-        }*/
         for(i=1; i<=_num_elementos; i++){
             if(seg->_item==item)
                 break;
@@ -42,7 +38,6 @@ void ListaEncadeada::remover_elemento(TipoItem item){
                 seg= seg->_prox;
             }
         }
-        //std::cout << cont << std::endl;
         if(i>_num_elementos){
             std::cout << "Item "<< item << " n encontrado!" << std::endl;
             return;
@@ -64,4 +59,68 @@ void ListaEncadeada::imprime(){
         aux= aux->_prox;
     }
     std::cout << std::endl;
+}
+
+void ListaEncadeada::medicao(TipoItem ml){
+    Fila fila= Fila();
+    Node_t *ant, *seg;
+    int i;
+    ant= _inicio;
+    seg= ant->_prox;
+    
+    //Verifica se está na lista
+    for(i=0; i<_num_elementos; i++){
+        if(ml== seg->_item){
+            std::cout << "1" << std::endl;
+            return;
+        }
+        ant= seg;
+        seg= seg->_prox;
+    }
+
+    ant= _inicio;
+    seg= ant->_prox;
+    //Armazena na fila o valor dos frascos
+    for(i=0; i<_num_elementos; i++){
+        ant= seg;
+        fila.incluir_elemento(ant->_item, 1);
+        seg= seg->_prox;
+    }
+
+    Node_f *aux, *it;
+    TipoItem temp=0;
+    int cont;
+
+    aux= fila._inicio->_prox;
+
+    while(1){
+        //for(i=0; i<fila._num_elementos; i++){
+            //fila.remover_elemento();
+            it= fila._inicio->_prox;
+            cont= fila._num_elementos;
+            //Implementar a soma e subtração de termos ;D
+            for(i=0; i< cont; i++){
+                //Soma
+                temp = aux->_item._ml+  it->_item._ml;
+                if(temp== ml){
+                    std::cout << aux->_item._qtde + 1 << std::endl;
+                    return;
+                }else{
+                    fila.incluir_elemento(temp, aux->_item._qtde+1);
+                }
+                //Subtração
+                temp= aux->_item._ml- it->_item._ml;
+                if(temp== ml){
+                    std::cout << aux->_item._qtde + 1 << std::endl;
+                    return;
+                }else if(temp>0){
+                    fila.incluir_elemento(temp, aux->_item._qtde+1);
+                }
+                it= it->_prox;
+            }
+            aux= aux->_prox;
+        //}
+    }
+    fila.limpar();
+    fila.imprime();
 }

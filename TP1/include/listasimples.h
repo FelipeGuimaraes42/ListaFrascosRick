@@ -8,17 +8,17 @@ struct Node_t{
     Node_t *_prox; 
 };
 
-
 struct ListaEncadeada{
     Node_t *_inicio, *_fim;
     int _num_elementos= 0;
 
     ListaEncadeada();
     ~ListaEncadeada();
-
-    void remover_elemento(TipoItem);
+    
     void incluir_elemento(TipoItem);
+    void remover_elemento(TipoItem);
     void imprime();
+    void medicao(TipoItem);
 };
 
 
