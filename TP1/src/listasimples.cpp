@@ -87,21 +87,21 @@ void ListaEncadeada::medicao(TipoItem ml){
         seg= seg->_prox;
     }
 
-    Node_f *aux, *it;
+    Node_f *aux;
+    Node_t *it;
     TipoItem temp=0;
     int cont;
-
+          
     aux= fila._inicio->_prox;
 
     while(1){
-        //for(i=0; i<fila._num_elementos; i++){
-            //fila.remover_elemento();
-            it= fila._inicio->_prox;
+        //for(i=0; i<fila._num_elementos; i++){  
+            it= _inicio->_prox;
             cont= fila._num_elementos;
             //Implementar a soma e subtração de termos ;D
-            for(i=0; i< cont; i++){
+            for(i=0; i< _num_elementos; i++){
                 //Soma
-                temp = aux->_item._ml+  it->_item._ml;
+                temp = aux->_item._ml+  it->_item;
                 if(temp== ml){
                     std::cout << aux->_item._qtde + 1 << std::endl;
                     return;
@@ -109,7 +109,7 @@ void ListaEncadeada::medicao(TipoItem ml){
                     fila.incluir_elemento(temp, aux->_item._qtde+1);
                 }
                 //Subtração
-                temp= aux->_item._ml- it->_item._ml;
+                temp= aux->_item._ml- it->_item;
                 if(temp== ml){
                     std::cout << aux->_item._qtde + 1 << std::endl;
                     return;
@@ -119,8 +119,9 @@ void ListaEncadeada::medicao(TipoItem ml){
                 it= it->_prox;
             }
             aux= aux->_prox;
+            fila.remover_elemento();
         //}
     }
     fila.limpar();
-    fila.imprime();
+    //fila.imprime();
 }

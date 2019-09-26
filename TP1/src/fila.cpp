@@ -19,7 +19,7 @@ void Fila::incluir_elemento(TipoItem ml, int iteracao){
     _fim->_item._qtde= iteracao;
     _fim->_prox= nullptr;
     _num_elementos++;
-    std::cout << "Item adicionado!" << std::endl;
+    //std::cout << "Item adicionado!" << std::endl;
 }
 
 void Fila::remover_elemento(){
@@ -30,7 +30,7 @@ void Fila::remover_elemento(){
     aux->_prox= seg->_prox;
     delete seg;
     _num_elementos--;
-    std::cout << "Item removido!" << std::endl;
+    //std::cout << "Item removido!" << std::endl;
     if(aux->_prox== nullptr)
         _fim= aux;
 }
