@@ -3,6 +3,8 @@
 #include "include/listasimples.h"
 #include "include/fila.h"
 
+//Construtor do TAD ListaEncadeada
+//
 ListaEncadeada::ListaEncadeada(){
     _inicio= new Node_t();
     _fim= _inicio;
