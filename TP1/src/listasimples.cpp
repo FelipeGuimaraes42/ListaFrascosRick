@@ -1,14 +1,14 @@
 #include <iostream>
 
-#include "../include/listasimples.h"
-#include "../include/fila.h"
+#include "include/listasimples.h"
+#include "include/fila.h"
 
 ListaEncadeada::ListaEncadeada(){
     _inicio= new Node_t();
     _fim= _inicio;
     _inicio->_prox= nullptr;
     _num_elementos= 0;
-    std::cout << "Lista Criada!" << std::endl;
+    //std::cout << "Lista Criada!" << std::endl;
 }
 
 ListaEncadeada::~ListaEncadeada(){}
@@ -19,12 +19,12 @@ void ListaEncadeada::incluir_elemento(TipoItem item){
     _fim->_item= item;
     _fim->_prox = nullptr;
     _num_elementos ++;
-    std::cout << "Item " << item << " adicionado!" << std::endl;
+    //std::cout << "Item " << item << " adicionado!" << std::endl;
 }
 
 void ListaEncadeada::remover_elemento(TipoItem item){
     if(_num_elementos==0){
-        std::cout << "Lista vazia!" << std::endl;
+        //std::cout << "Lista vazia!" << std::endl;
         return;
     }else{
         int i;
@@ -39,10 +39,10 @@ void ListaEncadeada::remover_elemento(TipoItem item){
             }
         }
         if(i>_num_elementos){
-            std::cout << "Item "<< item << " n encontrado!" << std::endl;
+            //std::cout << "Item "<< item << " n encontrado!" << std::endl;
             return;
         }else{
-            std::cout << "Item " << seg->_item << " deletado!" << std::endl;
+            //std::cout << "Item " << seg->_item << " deletado!" << std::endl;
             ant->_prox= seg->_prox;
             if(ant->_prox == nullptr)
                 _fim= ant;
@@ -71,7 +71,7 @@ void ListaEncadeada::medicao(TipoItem ml){
     //Verifica se está na lista
     for(i=0; i<_num_elementos; i++){
         if(ml== seg->_item){
-            std::cout << "1" << std::endl;
+            std::cout << 1 << std::endl;
             return;
         }
         ant= seg;
@@ -90,14 +90,11 @@ void ListaEncadeada::medicao(TipoItem ml){
     Node_f *aux;
     Node_t *it;
     TipoItem temp=0;
-    int cont;
-          
     aux= fila._inicio->_prox;
 
     while(1){
         //for(i=0; i<fila._num_elementos; i++){  
             it= _inicio->_prox;
-            cont= fila._num_elementos;
             //Implementar a soma e subtração de termos ;D
             for(i=0; i< _num_elementos; i++){
                 //Soma

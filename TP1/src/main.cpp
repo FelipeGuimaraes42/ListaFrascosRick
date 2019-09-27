@@ -1,36 +1,22 @@
 #include <iostream>
+#include <cstdio>
 #include <string>
-#include "../include/listasimples.h"
-#include "../include/fila.h"
+#include "include/listasimples.h"
+#include "include/fila.h"
+
+char opcao;
+TipoItem item;
 
 int main() {
     ListaEncadeada Lista= ListaEncadeada();
-    /*Fila fila= Fila();
-    fila.incluir_elemento(5, 1);
-    fila.incluir_elemento(6, 2);
-    fila.incluir_elemento(7, 2);
-    fila.imprime();
-    fila.remover_elemento();
-    fila.remover_elemento();
-    fila.remover_elemento();
-    fila.remover_elemento();
-    fila.imprime();
-    fila.incluir_elemento(5, 1);
-    fila.imprime();*/
-
-    while(1){
-        std::string opcao;
-        TipoItem item;
-        std::cin >> item >> opcao;
-
-        //Teste
-        if(opcao[0]=='e'){
+    while(scanf("%d %c", &item, &opcao) != EOF){
+        if(opcao=='e'){
             break;
-        }else if(opcao[0]== 'i'){
+        }else if(opcao== 'i'){
             Lista.incluir_elemento(item);
-        }else if(opcao[0]== 'r'){
+        }else if(opcao== 'r'){
             Lista.remover_elemento(item);
-        }else if(opcao[0]== 'p'){
+        }else if(opcao== 'p'){
             Lista.medicao(item);
         }else{
             std::cout << "Opcao invalida. Tente de novo!" << std::endl;
