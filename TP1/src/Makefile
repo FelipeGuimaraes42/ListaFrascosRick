@@ -35,17 +35,17 @@ TMPOUT=tp1.testresult
 # CMD sao os comandos necessarios para executar a regra (por exemplo, chamar o
 # gcc)
 
-$(EXEC): src/main.cpp listasimples.o fila.o
-	$(CC) $(CFLAGS) src/main.cpp listasimples.o fila.o -o $(EXEC)
+$(EXEC): main.cpp listasimples.o fila.o
+	$(CC) $(CFLAGS) main.cpp listasimples.o fila.o -o $(EXEC)
 
-main.o: src/main.cpp 
-	$(CC) $(CFLAGS) -c src/main.cpp -o main.o
+main.o: main.cpp 
+	$(CC) $(CFLAGS) -c main.cpp -o main.o
 
-listasimples.o: src/listasimples.cpp 
-	$(CC) $(CFLAGS) -c src/listasimples.cpp -o listasimples.o
+listasimples.o: listasimples.cpp 
+	$(CC) $(CFLAGS) -c listasimples.cpp -o listasimples.o
 
-fila.o: src/fila.cpp 
-	$(CC) $(CFLAGS) -c src/fila.cpp -o fila.o
+fila.o: fila.cpp 
+	$(CC) $(CFLAGS) -c fila.cpp -o fila.o
 
 test: $(EXEC)
 	@bash run_tests.sh $(EXEC) $(TMPOUT)
