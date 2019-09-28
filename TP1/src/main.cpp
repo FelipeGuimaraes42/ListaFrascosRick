@@ -10,7 +10,7 @@ TipoItem item;
 int main() {
     ListaEncadeada Lista= ListaEncadeada();
     while(scanf("%d %c", &item, &opcao) != EOF){
-        if(opcao=='e'){
+        if(opcao=='e' || item==0){
             break;
         }else if(opcao== 'i'){
             Lista.incluir_elemento(item);

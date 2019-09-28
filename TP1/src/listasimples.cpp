@@ -61,6 +61,7 @@ void ListaEncadeada::remover_elemento(TipoItem item){
     }
 }
 
+//Apaga tudo da fila menos a célula cabeça
 void ListaEncadeada::imprime(){
     Node_t *aux= _inicio->_prox;
     while(aux!= nullptr){

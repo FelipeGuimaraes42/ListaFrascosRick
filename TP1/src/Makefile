@@ -35,7 +35,10 @@ TMPOUT=tp1.testresult
 # CMD sao os comandos necessarios para executar a regra (por exemplo, chamar o
 # gcc)
 
-$(EXEC): main.cpp listasimples.o fila.o
+run: $(EXEC)
+	$(EXEC)
+
+$(EXEC): main.cpp listasimples.o fila.o main.o
 	$(CC) $(CFLAGS) main.cpp listasimples.o fila.o -o $(EXEC)
 
 main.o: main.cpp 

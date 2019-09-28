@@ -2,6 +2,7 @@
 
 #include "include/fila.h"
 
+//Construtor do TAD Fila
 Fila::Fila(){
     _inicio= new Node_f();
     _fim= _inicio;
@@ -10,8 +11,10 @@ Fila::Fila(){
     //std::cout << "Fila criada!" << std::endl;
 }
 
+//Destrutor do TAD Fila
 Fila::~Fila(){}
 
+//Inclusão de elemento do final da fila
 void Fila::incluir_elemento(TipoItem ml, int iteracao){
     _fim->_prox= new Node_f();
     _fim= _fim->_prox;
@@ -22,6 +25,7 @@ void Fila::incluir_elemento(TipoItem ml, int iteracao){
     //std::cout << "Item adicionado!" << std::endl;
 }
 
+//Remoção de elementos do início da fila
 void Fila::remover_elemento(){
     if(_num_elementos== 0)
         return;
@@ -35,6 +39,7 @@ void Fila::remover_elemento(){
         _fim= aux;
 }
 
+//Imprime todos os elementos da fila separados por tab
 void Fila::imprime(){
     Node_f *aux= _inicio->_prox;
     while(aux!= nullptr){
@@ -44,6 +49,7 @@ void Fila::imprime(){
     std::cout << std::endl;
 }
 
+//Apaga tudo da fila menos a célula cabeça
 void Fila::limpar(){
     while(_num_elementos> 0){
         Node_f *aux= _inicio;
