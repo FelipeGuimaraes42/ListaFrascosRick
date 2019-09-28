@@ -4,7 +4,6 @@
 #include "include/fila.h"
 
 //Construtor do TAD ListaEncadeada
-//
 ListaEncadeada::ListaEncadeada(){
     _inicio= new Node_t();
     _fim= _inicio;
@@ -13,8 +12,11 @@ ListaEncadeada::ListaEncadeada(){
     //std::cout << "Lista Criada!" << std::endl;
 }
 
+//Destrutor padrão
 ListaEncadeada::~ListaEncadeada(){}
 
+/*A inserção de elementos é feita apenas no fim da lista, logo a função aloca uma memória para um novo fim
+e o 'fim anterior' é alocado como o novo elemento*/
 void ListaEncadeada::incluir_elemento(TipoItem item){
     _fim->_prox= new Node_t();
     _fim= _fim->_prox;
@@ -24,7 +26,11 @@ void ListaEncadeada::incluir_elemento(TipoItem item){
     //std::cout << "Item " << item << " adicionado!" << std::endl;
 }
 
+/*Procura na lista o elemento passado por parâmetro usando dois ponteiros, pois não é duplamente
+encadeada
+Quando encontrao valor na lista, o ponteiro ant aponta para o prox do prox e remove o seg*/
 void ListaEncadeada::remover_elemento(TipoItem item){
+    //Testa se há elementos na lista
     if(_num_elementos==0){
         //std::cout << "Lista vazia!" << std::endl;
         return;
@@ -46,6 +52,7 @@ void ListaEncadeada::remover_elemento(TipoItem item){
         }else{
             //std::cout << "Item " << seg->_item << " deletado!" << std::endl;
             ant->_prox= seg->_prox;
+            //Atualiza o novo final se necessário
             if(ant->_prox == nullptr)
                 _fim= ant;
             delete(seg);
@@ -93,11 +100,16 @@ void ListaEncadeada::medicao(TipoItem ml){
     Node_t *it;
     TipoItem temp=0;
     aux= fila._inicio->_prox;
-
+    /*
+        Esse loop aninhado é bem simples: duplica o primeiro elemento na fila e apaga ele da fila.
+        Depois, soma e subtrai esses valores com os frascos e os compara com o valor que o usuário deseja medir.
+        Se for o valor, retorna o número de operçãoes,
+        senão, adiciona esse valor na fila com o número de operações incrementado para um novo loop.
+        O loop seguinte não tem verificação de consistência, pois todas as entradas são solucionáveis.
+    */
     while(1){
-        //for(i=0; i<fila._num_elementos; i++){  
+            //\Iterador de frascos
             it= _inicio->_prox;
-            //Implementar a soma e subtração de termos ;D
             for(i=0; i< _num_elementos; i++){
                 //Soma
                 temp = aux->_item._ml+  it->_item;
@@ -119,8 +131,6 @@ void ListaEncadeada::medicao(TipoItem ml){
             }
             aux= aux->_prox;
             fila.remover_elemento();
-        //}
     }
     fila.limpar();
-    //fila.imprime();
 }
