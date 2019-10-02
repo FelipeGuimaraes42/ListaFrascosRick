@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstdio>
-#include <string>
 #include "include/listasimples.h"
 #include "include/fila.h"
 
