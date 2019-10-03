@@ -25,6 +25,7 @@ struct Fila{
     void remover_elemento();
     void imprime();
     void limpar();
+    bool comparar(int);
 };
 
 

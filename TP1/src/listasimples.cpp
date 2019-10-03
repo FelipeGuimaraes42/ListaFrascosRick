@@ -108,16 +108,18 @@ void ListaEncadeada::medicao(TipoItem ml){
         Senão, adiciona esse novo valor na fila com o número de operações incrementado para um novo loop.
         O loop seguinte não tem verificação de consistência, pois todas as entradas são solucionáveis.
     */
+   //int cont=0;
     while(1){
             //\Iterador de frascos
             it= _inicio->_prox;
             for(i=0; i< _num_elementos; i++){
+                //std::cout << ++cont << std::endl;
                 //Soma
                 temp = aux->_item._ml+  it->_item;
                 if(temp== ml){
                     std::cout << aux->_item._qtde + 1 << std::endl;
                     return;
-                }else{
+                }else if(fila.comparar(temp)){
                     fila.incluir_elemento(temp, aux->_item._qtde+1);
                 }
                 //Subtração
@@ -125,7 +127,7 @@ void ListaEncadeada::medicao(TipoItem ml){
                 if(temp== ml){
                     std::cout << aux->_item._qtde + 1 << std::endl;
                     return;
-                }else if(temp>0){
+                }else if(temp>0 && fila.comparar(temp)){
                     fila.incluir_elemento(temp, aux->_item._qtde+1);
                 }
                 it= it->_prox;

@@ -61,3 +61,16 @@ void Fila::limpar(){
             _fim= aux;
     }
 }
+
+/*Método que reduz a redundância de operações na fila, ou seja, não armazena valores repetidos.
+Retorna falso se estiver na fila e verdadeiro caso contrário*/
+bool Fila::comparar(int temp){
+    Node_f *aux= _inicio;
+    while(aux->_prox != nullptr){
+        if(aux->_prox->_item._ml == temp)
+            return false;
+        else
+            aux= aux->_prox;
+    }
+    return true;
+}
