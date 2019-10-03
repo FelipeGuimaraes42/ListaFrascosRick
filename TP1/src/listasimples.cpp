@@ -28,7 +28,7 @@ void ListaEncadeada::incluir_elemento(TipoItem item){
 
 /*Procura na lista o elemento passado por parâmetro usando dois ponteiros, pois não é duplamente
 encadeada
-Quando encontrao valor na lista, o ponteiro ant aponta para o prox do prox e remove o seg*/
+Quando encontra o valor na lista, o ponteiro ant aponta para o prox do prox e remove o seg*/
 void ListaEncadeada::remover_elemento(TipoItem item){
     //Testa se há elementos na lista
     if(_num_elementos==0){
@@ -78,7 +78,7 @@ void ListaEncadeada::medicao(TipoItem ml){
     ant= _inicio;
     seg= ant->_prox;
     
-    //Verifica se está na lista
+    //Verifica se está na lista, se estiver retorna 1
     for(i=0; i<_num_elementos; i++){
         if(ml== seg->_item){
             std::cout << 1 << std::endl;
@@ -90,7 +90,7 @@ void ListaEncadeada::medicao(TipoItem ml){
 
     ant= _inicio;
     seg= ant->_prox;
-    //Armazena na fila o valor dos frascos
+    //Armazena na fila o valor dos frascos para fazer as combinações
     for(i=0; i<_num_elementos; i++){
         ant= seg;
         fila.incluir_elemento(ant->_item, 1);
@@ -104,8 +104,8 @@ void ListaEncadeada::medicao(TipoItem ml){
     /*
         Esse loop aninhado é bem simples: duplica o primeiro elemento na fila e apaga ele da fila.
         Depois, soma e subtrai esses valores com os frascos e os compara com o valor que o usuário deseja medir.
-        Se for o valor, retorna o número de operçãoes,
-        senão, adiciona esse valor na fila com o número de operações incrementado para um novo loop.
+        Se for o valor, retorna o número de operçãoes.
+        Senão, adiciona esse valor na fila com o número de operações incrementado para um novo loop.
         O loop seguinte não tem verificação de consistência, pois todas as entradas são solucionáveis.
     */
     while(1){
