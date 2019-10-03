@@ -105,7 +105,7 @@ void ListaEncadeada::medicao(TipoItem ml){
         Esse loop aninhado é bem simples: duplica o primeiro elemento na fila e apaga ele da fila.
         Depois, soma e subtrai esses valores com os frascos e os compara com o valor que o usuário deseja medir.
         Se for o valor, retorna o número de operçãoes.
-        Senão, adiciona esse valor na fila com o número de operações incrementado para um novo loop.
+        Senão, adiciona esse novo valor na fila com o número de operações incrementado para um novo loop.
         O loop seguinte não tem verificação de consistência, pois todas as entradas são solucionáveis.
     */
     while(1){
