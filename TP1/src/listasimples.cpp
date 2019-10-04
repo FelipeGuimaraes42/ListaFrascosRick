@@ -108,9 +108,9 @@ void ListaEncadeada::medicao(TipoItem ml){
         Senão, adiciona esse novo valor na fila com o número de operações incrementado para um novo loop.
         O loop seguinte não tem verificação de consistência, pois todas as entradas são solucionáveis.
     */
-   //int cont=0;
+    //int cont=0;
     while(1){
-            //\Iterador de frascos
+            //Iterador de frascos
             it= _inicio->_prox;
             for(i=0; i< _num_elementos; i++){
                 //std::cout << ++cont << std::endl;
